@@ -1,6 +1,6 @@
 package br.com.dio.board.persistence.entity;
 
-public enum BoardColumnTypes {
+public enum BoardColumnTypeEnum {
 
     INITIAL, FINAL, CANCEL, PENDING
 
