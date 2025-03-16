@@ -14,4 +14,5 @@ public class BoardColumnEntity {
     private BoardColumnTypeEnum type;
     private BoardEntity board = new BoardEntity();
     private List<CardEntity> cards = new ArrayList<>();
+
 }
