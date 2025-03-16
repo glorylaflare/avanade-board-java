@@ -35,7 +35,7 @@ public class BoardDAO {
         }
     }
 
-    private Optional<BoardEntity> findById(final Long id) throws SQLException {
+    public Optional<BoardEntity> findById(final Long id) throws SQLException {
         var sql = "SELECT id, name FROM BOARDS WHERE id = ?;";
         try(var statement = connection.prepareStatement((sql))) {
             statement.setLong(1, id);
