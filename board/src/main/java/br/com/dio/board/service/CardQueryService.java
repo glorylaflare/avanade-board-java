@@ -1,7 +1,7 @@
 package br.com.dio.board.service;
 
 import br.com.dio.board.persistence.dao.CardDAO;
-import br.com.dio.dto.CardDetailsDTO;
+import br.com.dio.board.dto.CardDetailsDTO;
 import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class CardQueryService {
     private final Connection connection;
 
     public Optional<CardDetailsDTO> findById(final Long id) throws SQLException {
-        var dao = new CardDAO(connection);
+        CardDAO dao = new CardDAO(connection);
         return dao.findById(id);
     }
 
