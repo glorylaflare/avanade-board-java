@@ -24,16 +24,18 @@ public class MainMenu {
         int option = -1;
         while (true){
             System.out.println("1 - Criar um novo board");
-            System.out.println("2 - Selecionar um board existente");
-            System.out.println("3 - Excluir um board");
-            System.out.println("4 - Sair");
+            System.out.println("2 - Mostrar todos os boards");
+            System.out.println("3 - Selecionar um board existente");
+            System.out.println("4 - Excluir um board");
+            System.out.println("5 - Sair");
 
             option = scanner.nextInt();
             switch (option){
                 case 1 -> createBoard();
-                case 2 -> selectBoard();
-                case 3 -> deleteBoard();
-                case 4 -> {
+                case 2 -> showAllBoards();
+                case 3 -> selectBoard();
+                case 4 -> deleteBoard();
+                case 5 -> {
                     System.out.println("Saindo...");
                     System.exit(0);
                 }
@@ -90,6 +92,18 @@ public class MainMenu {
         try(Connection connection = getConnection()){
             var service = new BoardService(connection);
             service.insert(entity);
+        }
+    }
+
+    private void showAllBoards() throws SQLException {
+        try(Connection connection = getConnection()){
+            BoardQueryService queryService = new BoardQueryService(connection);
+            List<BoardEntity> boards = queryService.getAllBoards();
+            boards.forEach(b -> {
+                System.out.println("[Board (ID: " + b.getId() + ", Name: " + b.getName() + ")]");
+            });
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar os boards: " + e.getMessage());
         }
     }
 
