@@ -4,10 +4,8 @@ import br.com.dio.board.persistence.entity.CardEntity;
 import br.com.dio.board.dto.CardDetailsDTO;
 import lombok.AllArgsConstructor;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static br.com.dio.board.persistence.converter.OffsetDateTimeConverter.toOffsetDateTime;
@@ -45,12 +43,13 @@ public class CardDAO {
     }
 
     public void moveToColum(final Long columnId, final Long cardId) throws SQLException {
-        var sql = "UPDATE CARDS SET board_column_id = ? " +
+        var sql = "UPDATE CARDS SET board_column_id = ?, date_moved = ? " +
                 "WHERE id = ?;";
 
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, columnId);
-            statement.setLong(2, cardId);
+            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setLong(3, cardId);
             statement.executeUpdate();
             System.out.println("O CardBoard de id " + cardId + " foi movido com sucesso!");
         } catch (SQLException e) {
@@ -59,9 +58,9 @@ public class CardDAO {
     }
 
     public Optional<CardDetailsDTO> findById(final Long id) throws SQLException {
-        var sql = "SELECT c.id, c.title, c.description, b.blockDate, b.blockReason, c.board_column_id, bc.name, " +
+        var sql = "SELECT c.id, c.title, c.description, b.block_date, b.block_reason, c.board_column_id, bc.name, " +
                 "(SELECT COUNT(sub_b.id) FROM BLOCKS sub_b WHERE sub_b.card_id = c.id) blocks_amount FROM CARDS c " +
-                "LEFT JOIN BLOCKS b ON c.id = b.card_id AND b.unblockDate IS NULL " +
+                "LEFT JOIN BLOCKS b ON c.id = b.card_id AND b.unblock_date IS NULL " +
                 "INNER JOIN BOARDS_COLUMNS bc ON bc.id = c.board_column_id " +
                 "WHERE c.id = ?;";
 
@@ -74,9 +73,9 @@ public class CardDAO {
                             resultSet.getLong("id"),
                             resultSet.getString("title"),
                             resultSet.getString("description"),
-                            nonNull(resultSet.getString("blockReason")),
-                            toOffsetDateTime(resultSet.getTimestamp("blockDate")),
-                            resultSet.getString("blockReason"),
+                            nonNull(resultSet.getString("block_reason")),
+                            toOffsetDateTime(resultSet.getTimestamp("block_date")),
+                            resultSet.getString("block_reason"),
                             resultSet.getInt("blocks_amount"),
                             resultSet.getLong("board_column_id"),
                             resultSet.getString("name")
