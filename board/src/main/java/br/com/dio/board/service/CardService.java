@@ -93,10 +93,7 @@ public class CardService {
 
     public void block(final Long id, final String reason, final List<BoardColumnInfoDTO> boardColumnsInfo) throws SQLException {
         try {
-            CardDAO dao = new CardDAO(connection);
-            Optional<CardDetailsDTO> optional = dao.findById(id);
-            CardDetailsDTO dto = optional.orElseThrow(
-                    () -> new EntityNotFoundException("O card de id %s não foi encontrado.".formatted(id)));
+            CardDetailsDTO dto = findCardOrThrow(id);
 
             if(dto.blocked()) {
                 throw new CardBlockedException("O card %s está bloqueado".formatted(id));
@@ -123,10 +120,7 @@ public class CardService {
 
     public void unblock(final Long id, final String reason) throws SQLException {
         try {
-            CardDAO dao = new CardDAO(connection);
-            Optional<CardDetailsDTO> optional = dao.findById(id);
-            CardDetailsDTO dto = optional.orElseThrow(
-                    () -> new EntityNotFoundException("O card de id %s não foi encontrado.".formatted(id)));
+            CardDetailsDTO dto = findCardOrThrow(id);
 
             if(!dto.blocked()) {
                 throw new CardBlockedException("O card %s não está bloqueado.".formatted(id));
@@ -143,6 +137,13 @@ public class CardService {
             }
             throw e;
         }
+    }
+
+    public CardDetailsDTO findCardOrThrow(final Long id) throws SQLException {
+        CardDAO dao = new CardDAO(connection);
+        return dao.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("O card de id %s não foi encontrado.".formatted(id))
+        );
     }
 
     private BoardColumnInfoDTO findCurrentColumn(final CardDetailsDTO dto, final List<BoardColumnInfoDTO> boardColumnsInfo) {
