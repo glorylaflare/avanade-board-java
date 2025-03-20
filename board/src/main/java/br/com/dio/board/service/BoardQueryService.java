@@ -17,6 +17,11 @@ public class BoardQueryService {
 
     private final Connection connection;
 
+    public List<BoardEntity> getAllBoards() throws SQLException {
+        BoardDAO dao = new BoardDAO(connection);
+        return dao.findAll();
+    }
+
     public Optional<BoardEntity> findById(final Long id) throws SQLException {
         BoardDAO dao = new BoardDAO(connection);
         BoardColumnDAO boardColumnDAO = new BoardColumnDAO(connection);
