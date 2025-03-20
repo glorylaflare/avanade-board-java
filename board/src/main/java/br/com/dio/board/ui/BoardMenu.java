@@ -7,7 +7,7 @@ import br.com.dio.board.service.BoardColumnQueryService;
 import br.com.dio.board.service.BoardQueryService;
 import br.com.dio.board.service.CardQueryService;
 import br.com.dio.board.service.CardService;
-import br.com.dio.dto.BoardColumnInfoDTO;
+import br.com.dio.board.dto.BoardColumnInfoDTO;
 import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
@@ -147,7 +147,7 @@ public class BoardMenu {
             var column = new BoardColumnQueryService(connection).findById(selectedColumnId);
             column.ifPresent(co -> {
                 System.out.printf("Coluna %s tipo %s\n", co.getName(), co.getType());
-                co.getCards().forEach(ca -> System.out.printf("Card %s - %s\nDescrição: %s",
+                co.getCards().forEach(ca -> System.out.printf("Card %s - %s\nDescrição: %s\n",
                         ca.getId(), ca.getTitle(), ca.getDescription()));
             });
         }
