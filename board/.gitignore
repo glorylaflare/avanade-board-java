@@ -32,8 +32,10 @@ build/
 ### VS Code ###
 .vscode/
 
+### Liquibase ###
 liquibase.log
 src/main/resources/application.properties
 src/main/resources/liquibase.properties
 
+### Dotenv ###
 .env
