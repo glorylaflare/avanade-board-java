@@ -29,7 +29,7 @@ public class BoardDAO {
                 throw new SQLException("Falha ao inserir no banco de dados, nenhuma linha afetada.");
             }
 
-            //Criando o board através do id gerado, em caso de erro, lança uma exceção.
+            //Criando o board através do id gerado, em caso de erro, lança uma exceção
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     entity.setId(generatedKeys.getLong(1));
@@ -40,6 +40,23 @@ public class BoardDAO {
             }
         }
         return entity;
+    }
+
+    public List<BoardEntity> findAll() throws SQLException {
+        List<BoardEntity> boards = new ArrayList<>();
+        var sql = "SELECT id, name FROM BOARDS;";
+
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            try(ResultSet resultSet = statement.executeQuery()) {
+               while(resultSet.next()) {
+                   BoardEntity entity = new BoardEntity();
+                   entity.setId(resultSet.getLong("id"));
+                   entity.setName(resultSet.getString("name"));
+                   boards.add(entity);
+               }
+            }
+        }
+        return boards;
     }
 
     public void delete(final Long id) throws SQLException {
