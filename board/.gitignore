@@ -39,3 +39,6 @@ src/main/resources/liquibase.properties
 
 ### Dotenv ###
 .env
+
+### TODO ###
+TODO.txt
