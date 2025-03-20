@@ -6,9 +6,11 @@ import br.com.dio.board.persistence.entity.BoardEntity;
 import br.com.dio.board.service.BoardQueryService;
 import br.com.dio.board.service.BoardService;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import static br.com.dio.board.persistence.config.ConnectionConfig.getConnection;
@@ -19,25 +21,29 @@ public class MainMenu {
 
     public void execute() throws SQLException {
         System.out.println("Bem vindo ao gerenciador de boards, escolha a opção desejada");
-        var option = -1;
+        int option = -1;
         while (true){
             System.out.println("1 - Criar um novo board");
             System.out.println("2 - Selecionar um board existente");
             System.out.println("3 - Excluir um board");
             System.out.println("4 - Sair");
+
             option = scanner.nextInt();
             switch (option){
                 case 1 -> createBoard();
                 case 2 -> selectBoard();
                 case 3 -> deleteBoard();
-                case 4 -> System.exit(0);
+                case 4 -> {
+                    System.out.println("Saindo...");
+                    System.exit(0);
+                }
                 default -> System.out.println("Opção inválida, informe uma opção do menu");
             }
         }
     }
 
     private void createBoard() throws SQLException {
-        var entity = new BoardEntity();
+        BoardEntity entity = new BoardEntity();
         System.out.println("Informe o nome do seu board");
         entity.setName(scanner.next());
 
@@ -48,7 +54,7 @@ public class MainMenu {
 
         System.out.println("Informe o nome da coluna inicial do board");
         var initialColumnName = scanner.next();
-        var initialColumn = createColumn(
+        BoardColumnEntity initialColumn = createColumn(
                 initialColumnName,
                 BoardColumnTypeEnum.INITIAL,
                 0);
@@ -57,7 +63,7 @@ public class MainMenu {
         for (int i = 0; i < additionalColumns; i++) {
             System.out.println("Informe o nome da coluna de tarefa pendente do board");
             var pendingColumnName = scanner.next();
-            var pendingColumn = createColumn(
+            BoardColumnEntity pendingColumn = createColumn(
                     pendingColumnName,
                     BoardColumnTypeEnum.PENDING,
                     i + 1);
@@ -66,7 +72,7 @@ public class MainMenu {
 
         System.out.println("Informe o nome da coluna final");
         var finalColumnName = scanner.next();
-        var finalColumn = createColumn(
+        BoardColumnEntity finalColumn = createColumn(
                 finalColumnName,
                 BoardColumnTypeEnum.FINAL,
                 additionalColumns + 1);
@@ -74,14 +80,14 @@ public class MainMenu {
 
         System.out.println("Informe o nome da coluna de cancelamento do baord");
         var cancelColumnName = scanner.next();
-        var cancelColumn = createColumn(
+        BoardColumnEntity cancelColumn = createColumn(
                 cancelColumnName,
                 BoardColumnTypeEnum.CANCEL,
                 additionalColumns + 2);
         columns.add(cancelColumn);
-
         entity.setBoardColumns(columns);
-        try(var connection = getConnection()){
+
+        try(Connection connection = getConnection()){
             var service = new BoardService(connection);
             service.insert(entity);
         }
@@ -90,9 +96,10 @@ public class MainMenu {
     private void selectBoard() throws SQLException {
         System.out.println("Informe o id do board que deseja selecionar");
         var id = scanner.nextLong();
-        try(var connection = getConnection()){
-            var queryService = new BoardQueryService(connection);
-            var optional = queryService.findById(id);
+
+        try(Connection connection = getConnection()){
+            BoardQueryService queryService = new BoardQueryService(connection);
+            Optional<BoardEntity> optional = queryService.findById(id);
             optional.ifPresentOrElse(
                     b -> new BoardMenu(b).execute(),
                     () -> System.out.printf("Não foi encontrado um board com id %s\n", id)
@@ -103,8 +110,9 @@ public class MainMenu {
     private void deleteBoard() throws SQLException {
         System.out.println("Informe o id do board que será excluido");
         var id = scanner.nextLong();
-        try(var connection = getConnection()){
-            var service = new BoardService(connection);
+
+        try(Connection connection = getConnection()){
+            BoardService service = new BoardService(connection);
             if (service.delete(id)){
                 System.out.printf("O board %s foi excluido\n", id);
             } else {
@@ -114,7 +122,7 @@ public class MainMenu {
     }
 
     private BoardColumnEntity createColumn(final String name, final BoardColumnTypeEnum type, final Integer order) {
-        var boardColumn = new BoardColumnEntity();
+        BoardColumnEntity boardColumn = new BoardColumnEntity();
         boardColumn.setName(name);
         boardColumn.setType(type);
         boardColumn.setOrder(order);
