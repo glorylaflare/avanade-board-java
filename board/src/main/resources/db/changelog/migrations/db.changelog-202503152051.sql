@@ -4,10 +4,10 @@
 
 CREATE TABLE BLOCKS (
     id BIGSERIAL PRIMARY KEY,
-    blockDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    blockReason VARCHAR(255) NOT NULL,
-    unblockDate TIMESTAMP NULL,
-    unblockReason VARCHAR(255) NOT NULL,
+    block_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    block_reason VARCHAR(255) NOT NULL,
+    unblock_date TIMESTAMP NULL,
+    unblock_reason VARCHAR(255) NOT NULL,
     card_id BIGINT NOT NULL,
     CONSTRAINT cards__blocks_fk FOREIGN KEY (card_id) REFERENCES cards(id) ON DELETE CASCADE
 );
