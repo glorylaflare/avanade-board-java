@@ -1,0 +1,1 @@
+O projeto ainda está sendo finalizado, faltam alguns ajustes e adicionar algumas funcionalidades que foi sugerida na aula.
