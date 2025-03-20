@@ -1,4 +1,4 @@
-package br.com.dio.exception;
+package br.com.dio.board.exception;
 
 public class CardBlockedException extends RuntimeException {
     public CardBlockedException(final String message) {

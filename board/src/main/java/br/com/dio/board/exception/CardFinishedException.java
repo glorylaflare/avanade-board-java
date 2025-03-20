@@ -1,4 +1,4 @@
-package br.com.dio.exception;
+package br.com.dio.board.exception;
 
 public class CardFinishedException extends RuntimeException {
     public CardFinishedException(final String message) {

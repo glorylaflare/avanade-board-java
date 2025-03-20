@@ -1,4 +1,4 @@
-package br.com.dio.exception;
+package br.com.dio.board.exception;
 
 public class EntityNotFoundException extends RuntimeException {
     public EntityNotFoundException(final String message) {
