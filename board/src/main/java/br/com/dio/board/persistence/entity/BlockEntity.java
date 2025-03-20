@@ -8,7 +8,7 @@ import java.time.OffsetDateTime;
 public class BlockEntity {
 
     private Long id;
-    private OffsetDateTime blackedAt;
+    private OffsetDateTime blockedAt;
     private String blockedReason;
     private OffsetDateTime unblockedAt;
     private String unblockedReason;
