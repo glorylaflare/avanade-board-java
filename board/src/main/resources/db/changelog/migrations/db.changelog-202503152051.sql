@@ -3,11 +3,11 @@
 --comment: blocks table create
 
 CREATE TABLE BLOCKS (
-    id SERIAL PRIMARY KEY,
-    data_bloqueio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    motivo_bloqueio VARCHAR(255) NOT NULL,
-    data_desbloqueio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    motivo_desbloqueio VARCHAR(255) NOT NULL,
+    id BIGSERIAL PRIMARY KEY,
+    blockDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    blockReason VARCHAR(255) NOT NULL,
+    unblockDate TIMESTAMP NULL,
+    unblockReason VARCHAR(255) NOT NULL,
     card_id BIGINT NOT NULL,
     CONSTRAINT cards__blocks_fk FOREIGN KEY (card_id) REFERENCES cards(id) ON DELETE CASCADE
 );

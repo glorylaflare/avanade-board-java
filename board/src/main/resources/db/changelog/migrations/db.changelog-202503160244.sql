@@ -1,9 +1,9 @@
 --liquibase formatted sql
 --changeset marcelo:202503160244
---comment: set motivo_desbloqueio nullable
+--comment: set unblockReason nullable
 
 ALTER TABLE BLOCKS
-    ALTER COLUMN motivo_desbloqueio TYPE VARCHAR(255),
-    ALTER COLUMN motivo_desbloqueio DROP NOT NULL;
+    ALTER COLUMN unblockReason TYPE VARCHAR(255),
+    ALTER COLUMN unblockReason DROP NOT NULL;
 
---rollback ALTER TABLE BLOCKS ALTER COLUMN motivo_desbloqueio SET NOT NULL;
+--rollback ALTER TABLE BLOCKS ALTER COLUMN unblockReason SET NOT NULL;

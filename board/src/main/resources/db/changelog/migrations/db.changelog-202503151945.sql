@@ -3,8 +3,8 @@
 --comment: boards table create
 
 CREATE TABLE BOARDS(
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
 );
 
 --rollback DROP TABLE BOARDS
