@@ -1,10 +1,11 @@
 package br.com.dio.board.persistence.dao;
 
 import br.com.dio.board.persistence.entity.CardEntity;
-import br.com.dio.dto.CardDetailsDTO;
+import br.com.dio.board.dto.CardDetailsDTO;
 import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -18,16 +19,25 @@ public class CardDAO {
     private Connection connection;
 
     public CardEntity insert(final CardEntity entity) throws SQLException {
-        var sql = "INSERT INTO CARDS (titulo, descricao, board_column_id) VALUES (?, ?, ?);";
-        try(var statement = connection.prepareStatement(sql)) {
-            var i = 1;
-            statement.setString(i++, entity.getTitle());
-            statement.setString(i++, entity.getDescription());
-            statement.setLong(i, entity.getBoardColumn().getId());
-            statement.executeUpdate();
+        var sql = "INSERT INTO CARDS (title, description, board_column_id) " +
+                "VALUES (?, ?, ?);";
+
+        try(PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, entity.getTitle());
+            statement.setString(2, entity.getDescription());
+            statement.setLong(3, entity.getBoardColumn().getId());
+            int affectedRows = statement.executeUpdate();
+
+            if(affectedRows == 0) {
+                throw new SQLException("Falha ao inserir no banco de dados, nenhuma linha afetada para o CardBoard: " + entity.getId());
+            }
+
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     entity.setId(generatedKeys.getLong(1));
+                    System.out.println("O CardBoard foi criado com sucesso!");
+                } else {
+                    throw new SQLException("Falha ao obter a chave gerada para o novo CardBoard.");
                 }
             }
         }
@@ -35,37 +45,46 @@ public class CardDAO {
     }
 
     public void moveToColum(final Long columnId, final Long cardId) throws SQLException {
-        var sql = "UPDATE CARDS SET board_column_id = ? WHERE id = ?;";
-        try(var statement = connection.prepareStatement(sql)) {
-            var i = 1;
-            statement.setLong(i++, columnId);
-            statement.setLong(i, cardId);
+        var sql = "UPDATE CARDS SET board_column_id = ? " +
+                "WHERE id = ?;";
+
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, columnId);
+            statement.setLong(2, cardId);
             statement.executeUpdate();
+            System.out.println("O CardBoard de id " + cardId + " foi movido com sucesso!");
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao mover o cartão para a coluna.", e);
         }
     }
 
     public Optional<CardDetailsDTO> findById(final Long id) throws SQLException {
-        var sql = "SELECT c.id, c.titulo, c.descricao, b.data_bloqueio, b.motivo_bloqueio, c.board_column_id, bc.nome, (SELECT COUNT(sub_b.id) FROM BLOCKS sub_b WHERE sub_b.card_id = c.id) blocks_amount FROM CARDS c LEFT JOIN BLOCKS b ON c.id = b.card_id AND b.data_desbloqueio IS NULL INNER JOIN BOARDS_COLUMNS bc ON bc.id = c.board_column_id WHERE c.id = ?;";
-        try(var statement = connection.prepareStatement(sql)) {
+        var sql = "SELECT c.id, c.title, c.description, b.blockDate, b.blockReason, c.board_column_id, bc.name, " +
+                "(SELECT COUNT(sub_b.id) FROM BLOCKS sub_b WHERE sub_b.card_id = c.id) blocks_amount FROM CARDS c " +
+                "LEFT JOIN BLOCKS b ON c.id = b.card_id AND b.unblockDate IS NULL " +
+                "INNER JOIN BOARDS_COLUMNS bc ON bc.id = c.board_column_id " +
+                "WHERE c.id = ?;";
+
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, id);
-            statement.executeQuery();
-            var resultSet = statement.getResultSet();
-            if(resultSet.next()) {
-                var dto = new CardDetailsDTO(
-                        resultSet.getLong("c.id"),
-                        resultSet.getString("c.titulo"),
-                        resultSet.getString("c.descricao"),
-                        nonNull(resultSet.getString("b.motivo_bloqueio")),
-                        toOffsetDateTime(resultSet.getTimestamp("b.data_bloqueio")),
-                        resultSet.getString("b.motivo_bloqueio"),
-                        resultSet.getInt("blocks_amount"),
-                        resultSet.getLong("c.board_column_id"),
-                        resultSet.getString("bc.nome")
-                );
-                return Optional.of(dto);
+
+            try(ResultSet resultSet = statement.executeQuery()) {
+                if(resultSet.next()) {
+                    CardDetailsDTO dto = new CardDetailsDTO(
+                            resultSet.getLong("id"),
+                            resultSet.getString("title"),
+                            resultSet.getString("description"),
+                            nonNull(resultSet.getString("blockReason")),
+                            toOffsetDateTime(resultSet.getTimestamp("blockDate")),
+                            resultSet.getString("blockReason"),
+                            resultSet.getInt("blocks_amount"),
+                            resultSet.getLong("board_column_id"),
+                            resultSet.getString("name")
+                    );
+                    return Optional.of(dto);
+                }
             }
         }
         return Optional.empty();
     }
-
 }
