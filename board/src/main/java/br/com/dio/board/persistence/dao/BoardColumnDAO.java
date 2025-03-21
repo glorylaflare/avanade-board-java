@@ -115,7 +115,7 @@ public class BoardColumnDAO {
                     entity.setName(resultSet.getString("name"));
                     entity.setType(findByName(resultSet.getString("type")));
 
-                    while (resultSet.next()) {
+                    do {
                         String title = resultSet.getString("title");
                         if (isNull(title)) break;
 
@@ -124,7 +124,8 @@ public class BoardColumnDAO {
                         card.setTitle(title);
                         card.setDescription(resultSet.getString("description"));
                         entity.getCards().add(card);
-                    }
+                    } while (resultSet.next());
+
                     return Optional.of(entity);
                 }
             }
