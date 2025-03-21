@@ -102,7 +102,7 @@ public class MainMenu {
             BoardQueryService queryService = new BoardQueryService(connection);
             List<BoardEntity> boards = queryService.getAllBoards();
             boards.forEach(b -> {
-                System.out.println("[Board (ID: " + b.getId() + ", Name: " + b.getName() + ")]");
+                System.out.println("[Board (ID: " + b.getId() + ", Nome: \"" + b.getName() + "\")]");
             });
         } catch (SQLException e) {
             System.out.println("Erro ao listar os boards: " + e.getMessage());
