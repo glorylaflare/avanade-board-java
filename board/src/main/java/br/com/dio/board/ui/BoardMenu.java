@@ -166,7 +166,7 @@ public class BoardMenu {
             Optional<BoardColumnEntity> column = new BoardColumnQueryService(connection).findById(selectedColumnId);
             column.ifPresent(co -> {
                 System.out.printf("Coluna %s tipo %s\n", co.getName(), co.getType());
-                co.getCards().forEach(ca -> System.out.printf("Card %s - %s\nDescrição: %s\n",
+                co.getCards().forEach(ca -> System.out.printf("[Card (ID: %s, Nome: \"%s\", Descrição: \"%s\")]\n",
                         ca.getId(), ca.getTitle(), ca.getDescription()));
             });
         }
