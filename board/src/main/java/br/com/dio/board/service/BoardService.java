@@ -1,5 +1,8 @@
 package br.com.dio.board.service;
 
+import br.com.dio.board.dto.BoardDetailsDTO;
+import br.com.dio.board.dto.BoardInfoDTO;
+import br.com.dio.board.exception.EntityNotFoundException;
 import br.com.dio.board.persistence.dao.BoardColumnDAO;
 import br.com.dio.board.persistence.dao.BoardDAO;
 import br.com.dio.board.persistence.entity.BoardEntity;
@@ -7,9 +10,6 @@ import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
-
-import static br.com.dio.board.persistence.config.ConnectionConfig.getConnection;
 
 @AllArgsConstructor
 public class BoardService {
@@ -58,5 +58,12 @@ public class BoardService {
             }
             throw e;
         }
+    }
+
+    public BoardInfoDTO getInfo(final Long id) throws SQLException {
+        BoardDAO dao = new BoardDAO(connection);
+        return dao.findById(id)
+                .map(e -> new BoardInfoDTO(e.getId(), e.getName()))
+                .orElseThrow(() -> new EntityNotFoundException("O board de id %s não foi encontrado.".formatted(id)));
     }
 }
