@@ -135,7 +135,7 @@ public class MainMenu {
             System.out.println("Digite o nome do board \"" + dto.name() + "\" para confirmar a exclusão");
             var name = scanner.nextLine();
             if(!name.equals(dto.name())) {
-                System.out.println("O nome digitado não está correto. Operação cancelada!");
+                System.out.println("O nome digitado não está correto");
                 return;
             }
 
