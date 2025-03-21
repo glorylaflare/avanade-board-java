@@ -27,15 +27,15 @@ public class CardDAO {
             int affectedRows = statement.executeUpdate();
 
             if(affectedRows == 0) {
-                throw new SQLException("Falha ao inserir no banco de dados, nenhuma linha afetada para o CardBoard: " + entity.getId());
+                throw new SQLException("Falha ao inserir no banco de dados, nenhuma linha afetada para o Card: " + entity.getId());
             }
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     entity.setId(generatedKeys.getLong(1));
-                    System.out.println("O CardBoard foi criado com sucesso!");
+                    System.out.println("O Card foi criado com sucesso!");
                 } else {
-                    throw new SQLException("Falha ao obter a chave gerada para o novo CardBoard.");
+                    throw new SQLException("Falha ao obter a chave gerada para o novo Card.");
                 }
             }
         }
