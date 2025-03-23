@@ -22,7 +22,7 @@ public class BoardColumnDAO {
     private final Connection connection;
 
     public BoardColumnEntity insert(final BoardColumnEntity entity) throws SQLException {
-        var sql = "INSERT INTO BOARDS_COLUMNS (name, sort, type, board_id) " +
+        var sql = "INSERT INTO BOARDS_COLUMNS (name, column_order, type, board_id) " +
                 "VALUES (?, ?, ?, ?);";
 
         try(PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -52,10 +52,10 @@ public class BoardColumnDAO {
 
     public List<BoardColumnEntity> findByBoardId(final Long boardId) throws SQLException {
         List<BoardColumnEntity> entities = new ArrayList<>();
-        var sql = "SELECT id, name, sort, type " +
+        var sql = "SELECT id, name, column_order, type " +
                 "FROM BOARDS_COLUMNS " +
                 "WHERE board_id = ? " +
-                "ORDER BY sort;";
+                "ORDER BY column_order;";
 
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, boardId);
@@ -65,7 +65,7 @@ public class BoardColumnDAO {
                     BoardColumnEntity entity = new BoardColumnEntity();
                     entity.setId(resultSet.getLong("id"));
                     entity.setName(resultSet.getString("name"));
-                    entity.setOrder(resultSet.getInt("sort"));
+                    entity.setOrder(resultSet.getInt("column_order"));
                     entity.setType(findByName(resultSet.getString("type")));
                     entities.add(entity);
                 }
@@ -80,7 +80,7 @@ public class BoardColumnDAO {
                 "(SELECT COUNT(c.id) FROM CARDS c WHERE c.board_column_id = bc.id) AS cards_amount " +
                 "FROM BOARDS_COLUMNS bc " +
                 "WHERE board_id = ? " +
-                "ORDER BY sort;";
+                "ORDER BY column_order;";
 
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, boardId);
