@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.*;
 
 @AllArgsConstructor
-public class ReportService {
+public class ReportCardService {
 
     private final CardMovementDAO dao;
     private final ObjectMapper objectMapper;
@@ -29,8 +29,7 @@ public class ReportService {
 
         List<Map<String, String>> movementList = new ArrayList<>();
 
-        for (int i = 0; i < movements.size(); i++) {
-            CardMovementDTO movement = movements.get(i);
+        for (CardMovementDTO movement : movements) {
             var enteredAt = movement.entered_at();
             var leftedAt = movement.lefted_at();
 
@@ -47,27 +46,27 @@ public class ReportService {
                 timeSpent = "Ainda em andamento";
             }
 
-            Map<String, String> movementData = new LinkedHashMap<>();
+            Map<String, String> movementData = new HashMap<>();
             movementData.put("ID da coluna:", movement.board_column_id().toString());
             movementData.put("Nome da coluna:", movement.column_name());
             movementData.put("Data de entrada:", enteredAt.toString());
-            if(!"FINAL".equals(movement.column_type())) {
+            if (!"FINAL".equals(movement.column_type())) {
                 movementData.put("Data de saída:", leftedAt != null ? leftedAt.toString() : "Em andamento");
                 movementData.put("Tempo gasto:", timeSpent);
             }
             movementList.add(movementData);
         }
 
-        var firstEntry = movements.get(0).entered_at();
+        var firstEntry = movements.getFirst().entered_at();
 
-        Map<String, Object> reportData = new HashMap<>();
+        Map<String, Object> reportData = new LinkedHashMap<>();
         reportData.put("ID:", cardId);
         reportData.put("Movimentação:", movementList);
         reportData.put("Data de criação:", firstEntry.toString());
 
-        String reportPath = "src/main/resources/reports/card_" + cardId + "_report.json";
+        String reportPath = "src/main/resources/reports/cards/card_" + cardId + "_report.json";
 
-        Files.createDirectories(Paths.get("src/main/resources/reports"));
+        Files.createDirectories(Paths.get("src/main/resources/reports/cards"));
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(reportPath), reportData);
         System.out.println("Relatório gerado com sucesso " + reportPath);
     }
