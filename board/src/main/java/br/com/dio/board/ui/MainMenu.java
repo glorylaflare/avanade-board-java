@@ -1,6 +1,5 @@
 package br.com.dio.board.ui;
 
-import br.com.dio.board.dto.BoardDetailsDTO;
 import br.com.dio.board.dto.BoardInfoDTO;
 import br.com.dio.board.persistence.entity.BoardColumnEntity;
 import br.com.dio.board.persistence.entity.BoardColumnTypeEnum;
@@ -97,10 +96,13 @@ public class MainMenu {
         }
     }
 
-    private void showAllBoards() throws SQLException {
+    private void showAllBoards() {
         try(Connection connection = getConnection()){
             BoardQueryService queryService = new BoardQueryService(connection);
             List<BoardEntity> boards = queryService.getAllBoards();
+
+            if(boards.isEmpty()) throw new SQLException("Nenhum board foi encontrado");
+
             boards.forEach(b -> {
                 System.out.println("[Board (ID: " + b.getId() + ", Nome: \"" + b.getName() + "\")]");
             });
