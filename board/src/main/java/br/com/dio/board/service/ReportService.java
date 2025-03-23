@@ -49,10 +49,12 @@ public class ReportService {
 
             Map<String, String> movementData = new LinkedHashMap<>();
             movementData.put("ID da coluna:", movement.board_column_id().toString());
-            movementData.put("Nome da coluna:", movement.column_type());
-            movementData.put("Data de início:", enteredAt.toString());
-            movementData.put("Data de conclusão:", leftedAt != null ? leftedAt.toString() : "Em andamento");
-            movementData.put("Tempo gasto:", timeSpent);
+            movementData.put("Nome da coluna:", movement.column_name());
+            movementData.put("Data de entrada:", enteredAt.toString());
+            if(!"FINAL".equals(movement.column_type())) {
+                movementData.put("Data de saída:", leftedAt != null ? leftedAt.toString() : "Em andamento");
+                movementData.put("Tempo gasto:", timeSpent);
+            }
             movementList.add(movementData);
         }
 
