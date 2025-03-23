@@ -3,6 +3,7 @@ package br.com.dio.board.ui;
 import br.com.dio.board.dto.BoardDetailsDTO;
 import br.com.dio.board.dto.CardDetailsDTO;
 import br.com.dio.board.exception.CardBlockedException;
+import br.com.dio.board.persistence.dao.BlockDAO;
 import br.com.dio.board.persistence.dao.CardMovementDAO;
 import br.com.dio.board.persistence.entity.BoardColumnEntity;
 import br.com.dio.board.persistence.entity.BoardEntity;
@@ -12,7 +13,6 @@ import br.com.dio.board.dto.BoardColumnInfoDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 
-import javax.smartcardio.Card;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -123,10 +123,15 @@ public class BoardMenu {
 
             System.out.println("Informe o motivo do desbloqueio do card");
             var reason = scanner.next();
-
             new CardService(connection).unblock(cardId, reason);
+
+            BlockDAO dao = new BlockDAO(connection);
+            ObjectMapper objectMapper = new ObjectMapper();
+            new ReportBlockService(dao, objectMapper).generateBlockReport(cardId);
         } catch (RuntimeException ex){
             System.out.println(ex.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -193,7 +198,7 @@ public class BoardMenu {
         }
     }
 
-    private void generateReport() throws SQLException{
+    private void generateReport() throws SQLException {
         System.out.println("Informe o id do card que deseja gerar o relatório");
         var cardId = scanner.nextLong();
 
@@ -201,9 +206,7 @@ public class BoardMenu {
             CardMovementDAO dao = new CardMovementDAO(connection);
             ObjectMapper objectMapper = new ObjectMapper();
 
-            new ReportService(dao, objectMapper).generateCardReport(cardId);
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
+            new ReportCardService(dao, objectMapper).generateCardReport(cardId);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
