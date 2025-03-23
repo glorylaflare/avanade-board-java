@@ -1,6 +1,5 @@
 package br.com.dio.board.service;
 
-import br.com.dio.board.dto.BoardDetailsDTO;
 import br.com.dio.board.dto.BoardInfoDTO;
 import br.com.dio.board.exception.EntityNotFoundException;
 import br.com.dio.board.persistence.dao.BoardColumnDAO;
