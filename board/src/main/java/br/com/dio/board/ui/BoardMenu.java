@@ -3,17 +3,17 @@ package br.com.dio.board.ui;
 import br.com.dio.board.dto.BoardDetailsDTO;
 import br.com.dio.board.dto.CardDetailsDTO;
 import br.com.dio.board.exception.CardBlockedException;
+import br.com.dio.board.persistence.dao.CardMovementDAO;
 import br.com.dio.board.persistence.entity.BoardColumnEntity;
 import br.com.dio.board.persistence.entity.BoardEntity;
 import br.com.dio.board.persistence.entity.CardEntity;
-import br.com.dio.board.service.BoardColumnQueryService;
-import br.com.dio.board.service.BoardQueryService;
-import br.com.dio.board.service.CardQueryService;
-import br.com.dio.board.service.CardService;
+import br.com.dio.board.service.*;
 import br.com.dio.board.dto.BoardColumnInfoDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 
 import javax.smartcardio.Card;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -41,8 +41,9 @@ public class BoardMenu {
                 System.out.println("6 - Ver board");
                 System.out.println("7 - Ver coluna com cards");
                 System.out.println("8 - Ver card");
-                System.out.println("9 - Voltar para o menu anterior um card");
-                System.out.println("10 - Sair");
+                System.out.println("9 - Gerar relatório de um card");
+                System.out.println("10 - Voltar para o menu anterior um card");
+                System.out.println("11 - Sair");
 
                 option = scanner.nextInt();
                 switch (option) {
@@ -54,8 +55,9 @@ public class BoardMenu {
                     case 6 -> showBoard();
                     case 7 -> showColumn();
                     case 8 -> showCard();
-                    case 9 -> System.out.println("Voltando para o menu anterior");
-                    case 10 -> {
+                    case 9 -> generateReport();
+                    case 10 -> System.out.println("Voltando para o menu anterior");
+                    case 11 -> {
                         System.out.println("Saindo...");
                         System.exit(0);
                     }
@@ -188,6 +190,22 @@ public class BoardMenu {
                                 System.out.printf("Está no momento na coluna %s - %s\n", c.columnId(), c.columnName());
                             },
                             () -> System.out.printf("Não existe um card com o id %s\n", selectedCardId));
+        }
+    }
+
+    private void generateReport() throws SQLException{
+        System.out.println("Informe o id do card que deseja gerar o relatório");
+        var cardId = scanner.nextLong();
+
+        try(Connection connection = getConnection()) {
+            CardMovementDAO dao = new CardMovementDAO(connection);
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            new ReportService(dao, objectMapper).generateCardReport(cardId);
+        } catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
