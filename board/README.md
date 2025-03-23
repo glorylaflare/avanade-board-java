@@ -21,13 +21,14 @@ O projeto da aula foi desenvolvido em Java, utilizando Gradle e MySQL, serviu de
     - Optei por usar o Maven e o PostgreSQL por ser algo que já tenho mais hábito e também para me desafiar em fazer algo diferente daquilo que foi visto na aula, mas não teria problemas de usar Gradle e MySQL.
 - Adicionado uma nova dependência Jackson Databind
     - Dependência utilizada para gerar os arquivos json para os relatórios.
-- Adição de dois novo DTOs
+- Adição de três novo DTOs
     - Adição do BoardInfoDTO usado para resgatar as informações na hora da checagem de confirmação do Board após o usuário escolher a opção de deletar.
     - Adição do CardMovementDTO usado para resgatar as informações da tabela CARD_MOVEMENT_HISTORY e repassar para o relatório.
+    - Adição do BlockDetailsDTO usado para resgatar as informações de bloqueio de um card da tabela BLOCKS, repassando as informações para o relatório.
 - Adição de uma nova tabela CARD_MOVEMENT_HISTORY
     - Tabela que armazena os dados de entrada e saída de cada coluna de um card.
-- Adicionado uma nova Entity, DAO e Service relacionado as movimentações do card
-    - Novos arquivos, CardMovementEntity, CardMovementDAO e ReportService, utilizados para gerar o relatório em json, através da dependência Jackson.
+- Adicionado novos arquivos de Entity, DAO e Service relacionado as movimentações do card
+    - Novos arquivos, CardMovementEntity, CardMovementDAO, ReportCardService, ReportBlockService e BlockDAO utilizados para gerar os relatórios dos cards em json, através da dependência Jackson.
 
 **Novas features:**
 
@@ -46,6 +47,8 @@ O projeto da aula foi desenvolvido em Java, utilizando Gradle e MySQL, serviu de
     - Agora existe uma tabela que registra o tempo de entrada e saída de um card de suas respectivas colunas.
 - Desafio 2: Gerar relatório em json sobre as movimentações de um card em específico
     - Agora existe uma opção no BoardMenu capaz de gerar um relatório com todas as movimentações e o tempo que durou em cada coluna.
+- Desafio 3: Gerar relatório em json sobre o histórico de bloqueio de um card em específico
+    - Agora ao desbloquear um card, você gera um relatório de bloqueio, informando quanto tempo o card ficou bloqueado e os motivos de block e unblock.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -156,4 +159,3 @@ Card que estiverem na coluna _FINAL_ não poderão ser bloqueados.
   ```
 
 O relatório gerado conterá informações detalhadas sobre as movimentações do card, incluindo tempos de permanência em cada coluna.
-
