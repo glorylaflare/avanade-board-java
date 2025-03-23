@@ -9,7 +9,7 @@ CREATE TABLE CARD_MOVEMENT_HISTORY (
     card_id BIGINT NOT NULL,
     board_column_id BIGINT NOT NULL,
     CONSTRAINT cards__movements_fk FOREIGN KEY (card_id) REFERENCES cards(id),
-    CONSTRAINT boards_columns__cards_fk FOREIGN KEY (board_column_id) REFERENCES boards_columns(id)
+    CONSTRAINT boards_columns__cards_fk FOREIGN KEY (board_column_id) REFERENCES boards_columns(id) ON DELETE CASCADE
 );
 
 --rollback DROP TABLE CARD_MOVEMENT_HISTORY
