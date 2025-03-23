@@ -18,7 +18,7 @@ public class CardMovementDAO {
     private Connection connection;
 
     public List<CardMovementDTO> getMovementByCardId(final Long cardId) throws SQLException {
-        var sql = "SELECT cmh.*, bc.name AS column_type " +
+        var sql = "SELECT cmh.*, bc.name AS column_name, bc.type AS column_type " +
                 "FROM CARD_MOVEMENT_HISTORY cmh " +
                 "JOIN BOARDS_COLUMNS bc ON cmh.board_column_id = bc.id " +
                 "WHERE cmh.card_id = ? " +
@@ -38,6 +38,7 @@ public class CardMovementDAO {
                             toOffsetDateTime(resultSet.getTimestamp("lefted_at")),
                             resultSet.getLong("card_id"),
                             resultSet.getLong("board_column_id"),
+                            resultSet.getString("column_name"),
                             resultSet.getString("column_type")
                     );
 

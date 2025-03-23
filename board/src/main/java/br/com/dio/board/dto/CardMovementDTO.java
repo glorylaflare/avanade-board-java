@@ -8,5 +8,6 @@ public record CardMovementDTO(
         OffsetDateTime lefted_at,
         Long card_id,
         Long board_column_id,
+        String column_name,
         String column_type) {
 }
