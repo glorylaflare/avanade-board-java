@@ -1,12 +1,14 @@
 # 📌 Board Management System
 
-Um sistema de gerenciamento de boards e cards para organizar tarefas de forma eficiente.
+Esse projeto foi desenvolvido graças ao Bootcamp da DIO em parceria com a Avanade, o [Decola Tech 2025](https://www.dio.me/bootcamp/decola-tech-2025), no qual a ideia é construir um Board que gerencie cards/tarefas do início ao fim, ao estilo do "Jira". Esse era o desafio 2 proposto no bootcamp, no qual foi desenvolvido através das aulas do professor [@juniorjrjl](https://github.com/juniorjrjl).
+
+O projeto da aula foi desenvolvido em Java, utilizando Gradle e MySQL, serviu de exemplo e inspiração para desenvolver o meu código, com boa parte da base sendo feita através das aulas, mas decidi me aventurar e optei por fazer algumas mudanças para criar um leve desafio, porém, manti a base da estrutura e tudo que adicionei ao projeto foi utilizando a organização prévia do mesmo.
 
 ## 🚀 Funcionalidades
 
 - Criar, mover, bloquear e desbloquear cards dentro de um board
-- Registro de data e hora das movimentações dos cards
 - Interface interativa no terminal para manipulação dos boards e cards
+- Relatório de data e hora das movimentações dos cards
 
 ##  🎯️ Informações sobre o projeto
 
@@ -52,7 +54,8 @@ Um sistema de gerenciamento de boards e cards para organizar tarefas de forma ef
 - **Liquibase** (para controle de versão do banco de dados)
 - **PostgreSQL** (banco de dados relacional)
 - **Dotenv** (variáveis de ambiente)
-
+- **Jackson Databind**
+  
 ## 📂 Estrutura do Projeto
 
 ```
@@ -153,7 +156,4 @@ Card que estiverem na coluna _FINAL_ não poderão ser bloqueados.
   ```
 
 O relatório gerado conterá informações detalhadas sobre as movimentações do card, incluindo tempos de permanência em cada coluna.
-
----
-Agora você está pronto para usar o projeto! Caso tenha dúvidas, sinta-se à vontade para perguntar. 🚀
 
