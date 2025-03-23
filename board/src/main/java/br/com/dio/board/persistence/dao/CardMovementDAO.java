@@ -28,7 +28,6 @@ public class CardMovementDAO {
 
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, cardId);
-            statement.executeQuery();
 
             try(ResultSet resultSet = statement.executeQuery()) {
                 while(resultSet.next()) {
