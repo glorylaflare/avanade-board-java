@@ -84,10 +84,12 @@ board/
 │   │   │   ├── db/ 
 │   │   │   │   ├── changelog/
 │   │   │   │   │   ├── migrations/
-│   │   │   ├── reports/            
+│   │   │   ├── reports/  
+│   │   │   ├── images/             
 │   │   │   ├── application.properties
 │   │   │   ├── liquibase.properties 
-├── pom.xml 
+├── pom.xml
+├── README.md
 ├── .env 
 ```
 
