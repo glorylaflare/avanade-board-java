@@ -10,6 +10,8 @@ O projeto da aula foi desenvolvido em Java, utilizando Gradle e MySQL, serviu de
 - Interface interativa no terminal para manipulação dos boards e cards
 - Relatório de data e hora das movimentações dos cards
 
+Confira algumas imagens do projeto [aqui](src/main/resources/images).
+
 ##  🎯️ Informações sobre o projeto
 
 **Mudanças do projeto base:**
@@ -159,3 +161,8 @@ Card que estiverem na coluna _FINAL_ não poderão ser bloqueados.
   ```
 
 O relatório gerado conterá informações detalhadas sobre as movimentações do card, incluindo tempos de permanência em cada coluna.
+
+## 📄 Relatórios de Exemplo
+- [Resultado do relatório de Card em Json](src/main/resources/reports/cards/card_3_report.json)
+
+- [Resultado do relatório de Block em Json](src/main/resources/reports/blocks/block_3_report.json)
