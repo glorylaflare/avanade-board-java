@@ -19,7 +19,7 @@ public final class ConnectionConfig {
         String user = dotenv.get("DB_USER");
         String password = dotenv.get("DB_PASSWORD");
 
-        var connection = DriverManager.getConnection(
+        Connection connection = DriverManager.getConnection(
                 url,
                 user,
                 password);
