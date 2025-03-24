@@ -113,6 +113,8 @@ board/
     - Criar um novo cartão (card)
     - Mover um cartão entre colunas
     - Gerar um relatório de movimentações de um cartão
+    - Gerar um relatório com as informações de bloqueio de desbloqueio
+  
 
 ### Exemplo de Uso
 
@@ -120,7 +122,7 @@ board/
   ```sh
   Selecione a opção 1 no menu principal: "Criar um novo board"
   Escolha o nome do board: "Aulas pendentes do Bootcamp"
-  Responda se o board terá mais colunas além das 3 padrões (INITIAL, PENDENT, FINAL), se sim, digite o número de colunas, se não, digite 0
+  Responda se o board terá mais colunas além das 3 padrões (INITIAL, FINAL, CANCEL), se sim, digite o número de colunas, se não, digite 0
   Informe o nome das colunas do board
   "O Board foi criado com sucesso"
   ```
