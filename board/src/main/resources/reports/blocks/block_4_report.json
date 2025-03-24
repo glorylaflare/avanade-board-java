@@ -1,0 +1,10 @@
+{
+  "ID:" : 4,
+  "Histórico de bloqueios:" : [ {
+    "Data do bloqueio:" : "2025-03-24T03:51:21.581433Z",
+    "Motivo do bloqueio:" : "bloqueio de teste",
+    "Data de debloqueio:" : "2025-03-24T03:51:38.334410Z",
+    "Motivo de debloqueio:" : "desbloqueio de teste",
+    "Tempo bloqueado:" : "0 horas, 0 minutos e 16 segundos."
+  } ]
+}
