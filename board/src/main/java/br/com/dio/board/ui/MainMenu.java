@@ -1,6 +1,7 @@
 package br.com.dio.board.ui;
 
 import br.com.dio.board.dto.BoardInfoDTO;
+import br.com.dio.board.exception.EntityNotFoundException;
 import br.com.dio.board.persistence.entity.BoardColumnEntity;
 import br.com.dio.board.persistence.entity.BoardColumnTypeEnum;
 import br.com.dio.board.persistence.entity.BoardEntity;
@@ -131,20 +132,27 @@ public class MainMenu {
         scanner.nextLine();
 
         try(Connection connection = getConnection()){
+
             BoardService service = new BoardService(connection);
-            BoardInfoDTO dto = service.getInfo(id);
+            BoardInfoDTO dto = null;
+
+            try {
+                dto = service.getInfo(id);
+            } catch (EntityNotFoundException e) {
+                System.out.println(e.getMessage());
+                return;
+            }
 
             System.out.println("Digite o nome do board \"" + dto.name() + "\" para confirmar a exclusão");
             var name = scanner.nextLine();
+
             if(!name.equals(dto.name())) {
                 System.out.println("O nome digitado não está correto");
                 return;
             }
 
             if (service.delete(id)){
-                System.out.printf("O board %s foi excluido\n", id);
-            } else {
-                System.out.printf("Não foi encontrado um board com id %s\n", id);
+                System.out.printf("O board %s foi excluido com sucesso\n", id);
             }
         }
     }
