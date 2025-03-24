@@ -32,7 +32,7 @@ public class BoardMenu {
         try {
             System.out.printf("Bem vindo ao board %s, selecione a operação desejada\n", entity.getId());
             int option = -1;
-            while (option != 9) {
+            while (option != 10) {
                 System.out.println("1 - Criar um card");
                 System.out.println("2 - Mover um card");
                 System.out.println("3 - Bloquear um card");
