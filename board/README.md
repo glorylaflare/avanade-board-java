@@ -19,6 +19,7 @@ Confira algumas imagens do projeto [aqui](src/main/resources/images).
 - Alteração em algumas chamadas de variáveis
 - Adição de novos métodos
 - Alguns textos foram alterados para deixar as repostas do menu mais legíveis
+- Adição de variáveis de ambiente para o arquivo de conexão com o banco de dados
 - Projeto usando Maven e PostgreSQL
     - Optei por usar o Maven e o PostgreSQL por ser algo que já tenho mais hábito e também para me desafiar em fazer algo diferente daquilo que foi visto na aula, mas não teria problemas de usar Gradle e MySQL.
 - Adicionado uma nova dependência Jackson Databind
