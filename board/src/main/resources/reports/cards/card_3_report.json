@@ -1,21 +1,21 @@
 {
   "ID:" : 3,
+  "Data de criação:" : "23/03/2025 07:55:08",
   "Movimentação:" : [ {
     "ID da coluna:" : "7",
-    "Data de saída:" : "2025-03-23T08:21:02.997739Z",
+    "Data de saída:" : "23/03/2025 08:21:02",
     "Nome da coluna:" : "inicial",
-    "Data de entrada:" : "2025-03-23T07:55:08.753406Z",
+    "Data de entrada:" : "23/03/2025 07:55:08",
     "Tempo gasto:" : "0 horas, 25 minutos e 54 segundos."
   }, {
     "ID da coluna:" : "8",
-    "Data de saída:" : "2025-03-23T08:21:15.301117Z",
+    "Data de saída:" : "23/03/2025 08:21:15",
     "Nome da coluna:" : "pendente",
-    "Data de entrada:" : "2025-03-23T08:21:02.999246Z",
+    "Data de entrada:" : "23/03/2025 08:21:02",
     "Tempo gasto:" : "0 horas, 0 minutos e 12 segundos."
   }, {
     "ID da coluna:" : "9",
     "Nome da coluna:" : "final",
-    "Data de entrada:" : "2025-03-23T08:21:15.302646Z"
-  } ],
-  "Data de criação:" : "2025-03-23T07:55:08.753406Z"
+    "Data de entrada:" : "23/03/2025 08:21:15"
+  } ]
 }

@@ -1,0 +1,16 @@
+{
+  "ID:" : 7,
+  "Histórico de bloqueios:" : [ {
+    "Data do bloqueio:" : "26/03/2025 02:33:45",
+    "Motivo do bloqueio:" : "block de teste",
+    "Data de debloqueio:" : "26/03/2025 02:33:50",
+    "Motivo de debloqueio:" : "unblock ed teste",
+    "Tempo bloqueado:" : "0 horas, 0 minutos e 5 segundos."
+  }, {
+    "Data do bloqueio:" : "26/03/2025 02:37:01",
+    "Motivo do bloqueio:" : "final teste",
+    "Data de debloqueio:" : "26/03/2025 02:37:09",
+    "Motivo de debloqueio:" : "finalll",
+    "Tempo bloqueado:" : "0 horas, 0 minutos e 8 segundos."
+  } ]
+}
