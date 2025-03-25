@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.time.Duration;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class ReportCardService {
 
     public void generateCardReport(final Long cardId) throws SQLException, IOException {
         List<CardMovementDTO> movements = dao.getMovementByCardId(cardId);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formatedLeftedAt = "";
 
         if(movements.isEmpty()) {
             System.out.println("Nenhuma movimentação encontrada para o card " + cardId);
@@ -36,6 +40,11 @@ public class ReportCardService {
             String timeSpent;
 
             if (leftedAt != null) {
+                //LEFTED AT
+                String leftedAtDate = leftedAt.toString();
+                OffsetDateTime dataLefted = OffsetDateTime.parse(leftedAtDate);
+                formatedLeftedAt = formatter.format(dataLefted);
+
                 Duration duration = Duration.between(enteredAt, leftedAt);
                 long hours = duration.toHours();
                 long minutes = duration.toMinutes() % 60;
@@ -46,12 +55,17 @@ public class ReportCardService {
                 timeSpent = "Ainda em andamento";
             }
 
+            //ENTERED AT
+            String enteredAtDate = enteredAt.toString();
+            OffsetDateTime dataEntered = OffsetDateTime.parse(enteredAtDate);
+            String formatedenteredAtDate = formatter.format(dataEntered);
+
             Map<String, String> movementData = new HashMap<>();
             movementData.put("ID da coluna:", movement.board_column_id().toString());
             movementData.put("Nome da coluna:", movement.column_name());
-            movementData.put("Data de entrada:", enteredAt.toString());
+            movementData.put("Data de entrada:", formatedenteredAtDate);
             if (!"FINAL".equals(movement.column_type())) {
-                movementData.put("Data de saída:", leftedAt != null ? leftedAt.toString() : "Em andamento");
+                movementData.put("Data de saída:", leftedAt != null ? formatedLeftedAt : "Em andamento");
                 movementData.put("Tempo gasto:", timeSpent);
             }
             movementList.add(movementData);
@@ -59,10 +73,15 @@ public class ReportCardService {
 
         var firstEntry = movements.getFirst().entered_at();
 
+        //CREATED DATE
+        String createdAtDate = firstEntry.toString();
+        OffsetDateTime dataCreated = OffsetDateTime.parse(createdAtDate);
+        String formatedCreatedAt = formatter.format(dataCreated);
+
         Map<String, Object> reportData = new LinkedHashMap<>();
         reportData.put("ID:", cardId);
+        reportData.put("Data de criação:", formatedCreatedAt);
         reportData.put("Movimentação:", movementList);
-        reportData.put("Data de criação:", firstEntry.toString());
 
         String reportPath = "src/main/resources/reports/cards/card_" + cardId + "_report.json";
 
