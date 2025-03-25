@@ -9,6 +9,7 @@ O projeto da aula foi desenvolvido em Java, utilizando Gradle e MySQL, serviu de
 - Criar, mover, bloquear e desbloquear cards dentro de um board
 - Interface interativa no terminal para manipulação dos boards e cards
 - Relatório de data e hora das movimentações dos cards
+- Relatório de bloqueio e desbloqueio de um card
 
 Confira algumas imagens do projeto [aqui](src/main/resources/images).
 
