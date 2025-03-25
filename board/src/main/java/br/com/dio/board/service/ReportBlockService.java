@@ -2,7 +2,6 @@ package br.com.dio.board.service;
 
 import br.com.dio.board.dto.BlockDetailsDTO;
 import br.com.dio.board.persistence.dao.BlockDAO;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 
@@ -12,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.time.Duration;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,49 +25,52 @@ public class ReportBlockService {
     private final ObjectMapper objectMapper;
 
     public void generateBlockReport(final Long cardId) throws SQLException, IOException {
-        List<BlockDetailsDTO> blocks = dao.getReportByCardId(cardId);
-        String reportPath = "src/main/resources/reports/blocks/block_" + cardId + "_report.json";
+        List<BlockDetailsDTO> movements = dao.getReportByCardId(cardId);
 
-        Map<String, Object> reportData;
-
-        File reportFile = new File(reportPath);
-        if(reportFile.exists()) {
-            reportData = objectMapper.readValue(reportFile, new TypeReference<>() {});
-        } else {
-            reportData = new LinkedHashMap<>();
-            reportData.put("ID:", cardId);
-            reportData.put("Histórico de bloqueios:", new ArrayList<Map<String, Object>>());
+        if(movements.isEmpty()) {
+            System.out.println("Nenhuma movimentação encontrada para o card " + cardId);
+            return;
         }
 
-        @SuppressWarnings("uncheked")
-        List<Map<String, Object>> blockHistory = (List<Map<String, Object>>) reportData.get("Historico de bloqueios");
+        List<Map<String, String>> blockHistory = new ArrayList<>();
 
-        if(blockHistory == null) blockHistory = new ArrayList<>();
+        for (BlockDetailsDTO details : movements) {
+            Map<String, String> blockEntry = new LinkedHashMap<>();
 
-        for(BlockDetailsDTO detail : blocks) {
-            Map<String, Object> blockEntry = new LinkedHashMap<>();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            //BLOCK
+            String blockedDate = details.block_date().toString();
+            OffsetDateTime dataBlock = OffsetDateTime.parse(blockedDate);
+            String formatedBlockDate = formatter.format(dataBlock);
+            //UNBLOCK
+            String unblockedDate = details.unblock_date().toString();
+            OffsetDateTime dataUnblock = OffsetDateTime.parse(unblockedDate);
+            String formatedUnblockDate = formatter.format(dataUnblock);
 
-            blockEntry.put("Data do bloqueio:", detail.block_date().toString());
-            blockEntry.put("Motivo do bloqueio:", detail.block_reason());
-            blockEntry.put("Data de debloqueio:", detail.unblock_date().toString());
-            blockEntry.put("Motivo de debloqueio:", detail.unblock_reason());
+            blockEntry.put("Data do bloqueio:", formatedBlockDate);
+            blockEntry.put("Motivo do bloqueio:", details.block_reason());
+            blockEntry.put("Data de debloqueio:", formatedUnblockDate);
+            blockEntry.put("Motivo de debloqueio:", details.unblock_reason());
 
-            Duration duration = Duration.between(detail.block_date(), detail.unblock_date());
+            Duration duration = Duration.between(details.block_date(), details.unblock_date());
             long hours = duration.toHours();
             long minutes = duration.toMinutes() % 60;
-            long seconds = duration.toSeconds() % 60;
+            long seconds = duration.getSeconds() % 60;
 
             String blockedTime = (hours + " horas, " + minutes + " minutos e " + seconds + " segundos.");
-
             blockEntry.put("Tempo bloqueado:", blockedTime);
 
             blockHistory.add(blockEntry);
         }
 
+        Map<String, Object> reportData = new LinkedHashMap<>();
+        reportData.put("ID:", cardId);
         reportData.put("Histórico de bloqueios:", blockHistory);
 
+        String reportPath = "src/main/resources/reports/blocks/block_" + cardId + "_report.json";
+
         Files.createDirectories(Paths.get("src/main/resources/reports/blocks"));
-        objectMapper.writerWithDefaultPrettyPrinter().writeValue(reportFile, reportData);
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(reportPath), reportData);
         System.out.println("Relatório gerado com sucesso " + reportPath);
     }
 }
