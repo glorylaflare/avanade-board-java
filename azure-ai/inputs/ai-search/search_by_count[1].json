@@ -1,0 +1,11 @@
+{
+    "@odata.context": "https://avanade-dio-glorylaflare-aisearch.search.windows.net/indexes('azureblob-index')/$metadata#docs(*)",
+    "@odata.count": 1,
+    "value": [
+      {
+        "@search.score": 1.5551416,
+        "content": "\n\n\nReview: My favorite part about going to Fourth Coffee is the atmosphere. I love the warm lights and plants. It’s a great place to go get a cup of coffee while working on your next business idea or with friends at school. It’s also right next to the University hub, which makes it so easy to access for students. It just gets so busy on the weekends! I wish it was not so crowded. Since they started offering amazing breakfast sandwiches, I wouldn’t try to go get a coffee Saturday morning.  \nDate: September 1, 2018\nLocation: Los Angeles, California \nimage1.png\n\nimage2.png\n\n",
+        "metadata_storage_path": "aHR0cHM6Ly9hdmFuYWRlZ2xvcnkyMDI1LmJsb2IuY29yZS53aW5kb3dzLm5ldC9jb2ZmZWVyZXZpZXdzL3Jldmlldy0yLmRvY3g1"
+      }
+    ]
+}
