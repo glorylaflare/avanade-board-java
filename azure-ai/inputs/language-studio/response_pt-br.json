@@ -1,0 +1,655 @@
+{
+    "documents": [
+        {
+            "id": "id__1003",
+            "sentiment": "mixed",
+            "confidenceScores": {
+                "positive": 0.59,
+                "neutral": 0.07,
+                "negative": 0.34
+            },
+            "sentences": [
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.04,
+                        "neutral": 0.95,
+                        "negative": 0
+                    },
+                    "offset": 0,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.99,
+                        "neutral": 0,
+                        "negative": 0.01
+                    },
+                    "offset": 4,
+                    "length": 10,
+                    "text": "Sorria... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.53,
+                        "neutral": 0.01,
+                        "negative": 0.46
+                    },
+                    "offset": 14,
+                    "length": 42,
+                    "text": "Mas não se esconda atrás desse sorriso... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.95,
+                        "neutral": 0.04,
+                        "negative": 0.01
+                    },
+                    "offset": 56,
+                    "length": 36,
+                    "text": "Mostre aquilo que você é, sem medo. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1,
+                        "neutral": 0,
+                        "negative": 0
+                    },
+                    "offset": 92,
+                    "length": 61,
+                    "text": "Existem pessoas que sonham com o seu sorriso, assim como eu. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.86,
+                        "neutral": 0.13,
+                        "negative": 0.01
+                    },
+                    "offset": 153,
+                    "length": 6,
+                    "text": "Viva! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.98,
+                        "negative": 0
+                    },
+                    "offset": 159,
+                    "length": 7,
+                    "text": "Tente! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.09,
+                        "neutral": 0.89,
+                        "negative": 0.03
+                    },
+                    "offset": 166,
+                    "length": 35,
+                    "text": "A vida não passa de uma tentativa. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.06,
+                        "neutral": 0.93,
+                        "negative": 0.01
+                    },
+                    "offset": 201,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1,
+                        "neutral": 0,
+                        "negative": 0
+                    },
+                    "offset": 205,
+                    "length": 41,
+                    "text": "Ame acima de tudo, ame a tudo e a todos. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.22,
+                        "neutral": 0,
+                        "negative": 0.78
+                    },
+                    "offset": 246,
+                    "length": 63,
+                    "text": "Não feche os olhos para a sujeira do mundo, não ignore a fome! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.01,
+                        "negative": 0.99
+                    },
+                    "offset": 309,
+                    "length": 83,
+                    "text": "Esqueça a bomba, mas antes, faça algo para combatê-la, mesmo que se sinta incapaz. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1,
+                        "neutral": 0,
+                        "negative": 0
+                    },
+                    "offset": 392,
+                    "length": 44,
+                    "text": "Procure o que há de bom em tudo e em todos. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.01,
+                        "neutral": 0.03,
+                        "negative": 0.96
+                    },
+                    "offset": 436,
+                    "length": 61,
+                    "text": "Não faça dos defeitos uma distância, e sim, uma aproximação. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.25,
+                        "neutral": 0.72,
+                        "negative": 0.02
+                    },
+                    "offset": 497,
+                    "length": 8,
+                    "text": "Aceite! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.82,
+                        "neutral": 0.18,
+                        "negative": 0
+                    },
+                    "offset": 505,
+                    "length": 53,
+                    "text": "A vida, as pessoas, faça delas a sua razão de viver. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.1,
+                        "neutral": 0.88,
+                        "negative": 0.02
+                    },
+                    "offset": 558,
+                    "length": 9,
+                    "text": "Entenda! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.85,
+                        "neutral": 0.05,
+                        "negative": 0.1
+                    },
+                    "offset": 567,
+                    "length": 65,
+                    "text": "Entenda as pessoas que pensam diferente de você, não as reprove. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.03,
+                        "neutral": 0.95,
+                        "negative": 0.01
+                    },
+                    "offset": 632,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.03,
+                        "neutral": 0.89,
+                        "negative": 0.08
+                    },
+                    "offset": 636,
+                    "length": 8,
+                    "text": "Olhe... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.05,
+                        "neutral": 0.94,
+                        "negative": 0.01
+                    },
+                    "offset": 644,
+                    "length": 36,
+                    "text": "Olhe a sua volta, quantos amigos... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.97,
+                        "neutral": 0.03,
+                        "negative": 0
+                    },
+                    "offset": 680,
+                    "length": 34,
+                    "text": "Você já tornou alguém feliz hoje? ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0,
+                        "negative": 1
+                    },
+                    "offset": 714,
+                    "length": 40,
+                    "text": "Ou fez alguém sofrer com o seu egoísmo? ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.01,
+                        "neutral": 0.98,
+                        "negative": 0.01
+                    },
+                    "offset": 754,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.01,
+                        "neutral": 0.6,
+                        "negative": 0.39
+                    },
+                    "offset": 758,
+                    "length": 11,
+                    "text": "Não corra. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.01,
+                        "neutral": 0.58,
+                        "negative": 0.41
+                    },
+                    "offset": 769,
+                    "length": 23,
+                    "text": "Para que tanta pressa? ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.99,
+                        "negative": 0
+                    },
+                    "offset": 792,
+                    "length": 34,
+                    "text": "Corra apenas para dentro de você. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.71,
+                        "neutral": 0.26,
+                        "negative": 0.03
+                    },
+                    "offset": 826,
+                    "length": 7,
+                    "text": "Sonhe! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.15,
+                        "neutral": 0.01,
+                        "negative": 0.84
+                    },
+                    "offset": 833,
+                    "length": 63,
+                    "text": "Mas não prejudique ninguém e não transforme seu sonho em fuga. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.42,
+                        "neutral": 0.58,
+                        "negative": 0
+                    },
+                    "offset": 896,
+                    "length": 10,
+                    "text": "Acredite! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.01,
+                        "neutral": 0.96,
+                        "negative": 0.03
+                    },
+                    "offset": 906,
+                    "length": 8,
+                    "text": "Espere! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.14,
+                        "negative": 0.86
+                    },
+                    "offset": 914,
+                    "length": 54,
+                    "text": "Sempre haverá uma saída, sempre brilhará uma estrela. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.01,
+                        "negative": 0.99
+                    },
+                    "offset": 968,
+                    "length": 7,
+                    "text": "Chore! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.13,
+                        "neutral": 0.37,
+                        "negative": 0.49
+                    },
+                    "offset": 975,
+                    "length": 6,
+                    "text": "Lute! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.99,
+                        "neutral": 0.01,
+                        "negative": 0
+                    },
+                    "offset": 981,
+                    "length": 54,
+                    "text": "Faça aquilo que gosta, sinta o que há dentro de você. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.04,
+                        "neutral": 0.94,
+                        "negative": 0.02
+                    },
+                    "offset": 1035,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.11,
+                        "neutral": 0.8,
+                        "negative": 0.09
+                    },
+                    "offset": 1039,
+                    "length": 8,
+                    "text": "Ouça... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.25,
+                        "neutral": 0.73,
+                        "negative": 0.02
+                    },
+                    "offset": 1047,
+                    "length": 58,
+                    "text": "Escute o que as outras pessoas têm a dizer, é importante. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.05,
+                        "neutral": 0.92,
+                        "negative": 0.03
+                    },
+                    "offset": 1105,
+                    "length": 8,
+                    "text": "Suba... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.43,
+                        "neutral": 0.2,
+                        "negative": 0.36
+                    },
+                    "offset": 1113,
+                    "length": 130,
+                    "text": "faça dos obstáculos degraus para aquilo que você acha supremo, Mas não esqueça daqueles que não conseguem subir a escada da vida. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.04,
+                        "neutral": 0.95,
+                        "negative": 0
+                    },
+                    "offset": 1243,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.13,
+                        "neutral": 0.86,
+                        "negative": 0.01
+                    },
+                    "offset": 1247,
+                    "length": 10,
+                    "text": "Descubra! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 0.99,
+                        "neutral": 0.01,
+                        "negative": 0
+                    },
+                    "offset": 1257,
+                    "length": 46,
+                    "text": "Descubra aquilo que há de bom dentro de você. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.99,
+                        "negative": 0
+                    },
+                    "offset": 1303,
+                    "length": 55,
+                    "text": "Procure acima de tudo ser gente, eu também vou tentar. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.11,
+                        "neutral": 0.87,
+                        "negative": 0.02
+                    },
+                    "offset": 1358,
+                    "length": 4,
+                    "text": "Ei! ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.01,
+                        "neutral": 0.98,
+                        "negative": 0.01
+                    },
+                    "offset": 1362,
+                    "length": 8,
+                    "text": "Você... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.07,
+                        "neutral": 0.87,
+                        "negative": 0.05
+                    },
+                    "offset": 1370,
+                    "length": 15,
+                    "text": "não vá embora. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.98,
+                        "negative": 0.01
+                    },
+                    "offset": 1385,
+                    "length": 28,
+                    "text": "Eu preciso dizer-lhe que... ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1,
+                        "neutral": 0,
+                        "negative": 0
+                    },
+                    "offset": 1413,
+                    "length": 42,
+                    "text": "te adoro, simplesmente porque você existe.",
+                    "targets": [],
+                    "assessments": []
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2025-01-01"
+}

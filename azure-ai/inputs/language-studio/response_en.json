@@ -1,0 +1,173 @@
+{
+    "documents": [
+        {
+            "id": "id__2476",
+            "sentiment": "negative",
+            "confidenceScores": {
+                "positive": 0.02,
+                "neutral": 0.22,
+                "negative": 0.76
+            },
+            "sentences": [
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.09,
+                        "neutral": 0.37,
+                        "negative": 0.54
+                    },
+                    "offset": 0,
+                    "length": 30,
+                    "text": "George doesn’t like sickness. ",
+                    "targets": [],
+                    "assessments": [
+                        {
+                            "sentiment": "negative",
+                            "confidenceScores": {
+                                "positive": 0,
+                                "negative": 1
+                            },
+                            "offset": 15,
+                            "length": 4,
+                            "text": "like",
+                            "isNegated": true
+                        }
+                    ]
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.27,
+                        "negative": 0.73
+                    },
+                    "offset": 30,
+                    "length": 54,
+                    "text": "He doesn’t want to take medicine or go to the doctor. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.03,
+                        "neutral": 0.56,
+                        "negative": 0.41
+                    },
+                    "offset": 84,
+                    "length": 61,
+                    "text": "He does not want to catch any disease, especially Swine Flu. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.09,
+                        "negative": 0.91
+                    },
+                    "offset": 145,
+                    "length": 60,
+                    "text": "He hates sneezing, coughing, a runny nose, and watery eyes. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.76,
+                        "negative": 0.24
+                    },
+                    "offset": 205,
+                    "length": 73,
+                    "text": "He saw his friend with Swine Flu, and then his sister, and then his dad. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.33,
+                        "negative": 0.67
+                    },
+                    "offset": 278,
+                    "length": 89,
+                    "text": "He became so paranoid that he decided to quit his job and just stayed home all the time. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.9,
+                        "negative": 0.1
+                    },
+                    "offset": 367,
+                    "length": 30,
+                    "text": "He resorted to an online job. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.95,
+                        "negative": 0.02
+                    },
+                    "offset": 397,
+                    "length": 117,
+                    "text": "One day, Liza, his high school friend and long-time secret crush, sent him a message to ask for help with something. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.36,
+                        "neutral": 0.41,
+                        "negative": 0.23
+                    },
+                    "offset": 514,
+                    "length": 60,
+                    "text": "He couldn’t help but said yes so that Liza would come over. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "neutral",
+                    "confidenceScores": {
+                        "positive": 0.24,
+                        "neutral": 0.54,
+                        "negative": 0.22
+                    },
+                    "offset": 574,
+                    "length": 44,
+                    "text": "He was looking forward to seeing her again. ",
+                    "targets": [],
+                    "assessments": []
+                },
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0,
+                        "neutral": 0.03,
+                        "negative": 0.97
+                    },
+                    "offset": 618,
+                    "length": 152,
+                    "text": "When Liza knocked on his door, George opened it and was greeted by a Liza sneezing non-stop, with her eyes watering eye, running nose and hacking cough.",
+                    "targets": [],
+                    "assessments": []
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2025-01-01"
+}
