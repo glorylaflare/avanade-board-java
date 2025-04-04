@@ -1,5 +1,6 @@
 package br.com.dio.board.ui;
 
+import br.com.dio.board.dto.BoardColumnInfoDTO;
 import br.com.dio.board.dto.BoardDetailsDTO;
 import br.com.dio.board.dto.CardDetailsDTO;
 import br.com.dio.board.exception.CardBlockedException;
@@ -9,7 +10,6 @@ import br.com.dio.board.persistence.entity.BoardColumnEntity;
 import br.com.dio.board.persistence.entity.BoardEntity;
 import br.com.dio.board.persistence.entity.CardEntity;
 import br.com.dio.board.service.*;
-import br.com.dio.board.dto.BoardColumnInfoDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 
